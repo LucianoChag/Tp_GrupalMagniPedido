@@ -1,0 +1,25 @@
+.nav-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.carrito-button {
+  background-color: #007BA7; /* Cambiado a un color turquesa */
+  color: white; /* Color del texto blanco */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Puntero en forma de mano */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carrito-button:hover {
+  background-color: #001F3F; /* Cambiado a un color azul marino */
+}
+
+.carrito-button svg {
+  font-size: 1.2em;
+}
