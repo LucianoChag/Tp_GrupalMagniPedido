@@ -48,7 +48,7 @@ public class ArticuloManufacturadoFacadeImp extends BaseFacadeImp<ArticuloManufa
         return baseMapper.toDTOsList(articuloManufacturadoService.getAllHabilitados());
     }
 
-
+/*
     @Override
     public ResponseEntity<List<Map<String, Object>>> getAllImagesByArticuloId(Long id) {
         return articuloManufacturadoService.getAllImagesByArticuloId(id);
@@ -62,5 +62,5 @@ public class ArticuloManufacturadoFacadeImp extends BaseFacadeImp<ArticuloManufa
     @Override
     public ResponseEntity<String> deleteImage(String publicId, Long id) {
         return articuloManufacturadoService.deleteImage(publicId, id);
-    }
+    } */
 }

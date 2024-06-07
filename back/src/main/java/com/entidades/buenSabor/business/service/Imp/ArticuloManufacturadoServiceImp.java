@@ -65,6 +65,7 @@ public class ArticuloManufacturadoServiceImp extends BaseServiceImp<ArticuloManu
     }
 
     // Método para obtener todas las imágenes almacenadas
+    /*
     @Override
     //pedimos el id para retornar solo las imagenes de un articulo
     public ResponseEntity<List<Map<String, Object>>> getAllImagesByArticuloId(Long id) {
@@ -91,6 +92,9 @@ public class ArticuloManufacturadoServiceImp extends BaseServiceImp<ArticuloManu
         }
     }
 
+     */
+
+    /*
     // Método para subir imágenes a Cloudinary y guardar los detalles en la base de datos
     @Override
     //Pedimos el id de articulo para saber a que articulo asignar las imagenes
@@ -155,5 +159,5 @@ public class ArticuloManufacturadoServiceImp extends BaseServiceImp<ArticuloManu
             // Devolver un error (400) si ocurre alguna excepción durante la eliminación
             return new ResponseEntity<>("{\"status\":\"ERROR\", \"message\":\"" + e.getMessage() + "\"}", HttpStatus.BAD_REQUEST);
         }
-    }
+    } */
 }

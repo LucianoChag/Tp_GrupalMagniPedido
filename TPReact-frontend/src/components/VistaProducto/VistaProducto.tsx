@@ -6,6 +6,7 @@ import TablaGenerica from '../TablaGenerica/TablaGenerica';
 import SearchBar from '../SearchBar/SearchBar';
 import CategoryFilter from '../CategoryFilter/CategoryFilter';
 import ModalProducto from '../ModalProducto/ModalProducto';
+import './VistaProducto.css'
 
 interface VistaProductoProps {
   carrito: Producto[];
@@ -71,10 +72,16 @@ const VistaProducto: React.FC<VistaProductoProps> = ({ carrito, setCarrito }) =>
   });
 
   return (
-    <div>
-      <h2>Lista de Productos</h2>
-      <SearchBar searchTerm={searchTerm} onSearchTermChange={setSearchTerm} />
-      <CategoryFilter selectedCategory={selectedCategory} onCategoryChange={setSelectedCategory} categories={categories} />
+    <div className="vista-producto-container">
+      <h2>Comida del Buen Sabor</h2>
+      <div className="filter-container">
+        <div className="search-bar">
+          <SearchBar searchTerm={searchTerm} onSearchTermChange={setSearchTerm} />
+        </div>
+        <div className="category-filter">
+          <CategoryFilter selectedCategory={selectedCategory} onCategoryChange={setSelectedCategory} categories={categories} />
+        </div>
+      </div>
       <TablaGenerica
         productos={filteredProductos}
         onVerDetalle={handleVerDetalle}

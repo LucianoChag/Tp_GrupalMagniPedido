@@ -3,6 +3,12 @@ package com.entidades.buenSabor.presentation.rest;
 
 import com.entidades.buenSabor.domain.dto.PedidoMP;
 import com.entidades.buenSabor.domain.entities.PreferenceMP;
+import com.mercadopago.MercadoPagoConfig;
+import com.mercadopago.client.preference.PreferenceBackUrlsRequest;
+import com.mercadopago.client.preference.PreferenceClient;
+import com.mercadopago.client.preference.PreferenceItemRequest;
+import com.mercadopago.client.preference.PreferenceRequest;
+import com.mercadopago.resources.preference.Preference;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 
@@ -12,7 +18,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "*")
 public class MercadoPagoController {
-/*
+
     public PreferenceMP getPreferenciaIdMercadoPago(PedidoMP pedido){
         try {
             MercadoPagoConfig.setAccessToken("TEST-3480460339675888-052104-977e7a92511436b55bd518943c35e678-316937308");
@@ -49,5 +55,5 @@ public class MercadoPagoController {
         }
         
     }
-    */
+
 }

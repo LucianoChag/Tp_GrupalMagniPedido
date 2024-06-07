@@ -22,5 +22,5 @@ public class ArticuloManufacturadoDto extends BaseDto {
     private Set<ArticuloManufacturadoDetalleDto> articuloManufacturadoDetalles;
     private Boolean habilitado;
     private String categoriaNombre;
-    private Set<ImagenDto> imagenes;
+    private String imagen;
 }

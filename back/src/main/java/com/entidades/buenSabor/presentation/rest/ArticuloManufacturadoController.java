@@ -35,6 +35,7 @@ public class ArticuloManufacturadoController extends BaseControllerImp<ArticuloM
     }
 
     // Método POST para subir imágenes
+    /*
     @PostMapping("/uploads")
     public ResponseEntity<String> uploadImages(
             @RequestParam(value = "uploads", required = true) MultipartFile[] files,
@@ -72,6 +73,6 @@ public class ArticuloManufacturadoController extends BaseControllerImp<ArticuloM
             e.printStackTrace();
             return null; // Manejo básico de errores, se puede mejorar para devolver una respuesta más específica
         }
-    }
+    } */
 
 }

@@ -41,12 +41,12 @@ public class ArticuloInsumoFacadeImp extends BaseFacadeImp<ArticuloInsumo, Artic
     public ResponseEntity<List<Map<String, Object>>> getAllImagesByArticuloId(Long id) {
         return articuloInsumoService.getAllImagesByArticuloId(id);
     }
-
+/*
     @Override
     public ResponseEntity<String> uploadImages(MultipartFile[] files, Long id) {
         return articuloInsumoService.uploadImages(files,id);
     }
-
+*/
     @Override
     public ResponseEntity<String> deleteImage(String publicId, Long id) {
         return articuloInsumoService.deleteImage(publicId, id);

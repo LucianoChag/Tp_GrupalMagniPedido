@@ -1,4 +1,3 @@
-// src/components/TablaGenerica/TablaGenerica.tsx
 import React from 'react';
 import { Producto } from '../../types/types';
 import Buttons from '../Buttons/Buttons';
@@ -26,6 +25,7 @@ const TablaGenerica: React.FC<TablaGenericaProps> = ({ productos, onVerDetalle, 
     <table className="table">
       <thead>
         <tr>
+          <th>Imagen</th>
           <th>Nombre</th>
           <th>Precio</th>
           <th>Categoría</th>
@@ -36,6 +36,9 @@ const TablaGenerica: React.FC<TablaGenericaProps> = ({ productos, onVerDetalle, 
       <tbody>
         {productos.map(producto => (
           <tr key={producto.id}>
+            <td>
+              <img src={`/img/${producto.imagen}`} alt={producto.denominacion} className="producto-imagen" />
+            </td>
             <td>{producto.denominacion}</td>
             <td>{producto.precioVenta}</td>
             <td>{producto.categoriaNombre}</td>

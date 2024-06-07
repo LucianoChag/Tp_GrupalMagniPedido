@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 300px;
+  width: 300px; /* Incrementado */
   height: 100%;
   background-color: white;
   box-shadow: -2px 0 5px rgba(0,0,0,0.5);
@@ -19,14 +19,14 @@
 }
 
 .close-carrito-button {
-  background-color: #007BA7;
+  background-color: #a6c732;
   border: none;
-  font-size: 14px; /* Tamaño de fuente reducido */
+  font-size: 14px;
   cursor: pointer;
-  width: 30px; /* Anchura reducida */
-  height: 30px; /* Altura reducida */
-  padding: 0; /* Elimina el relleno */
-  border-radius: 5px; /* Bordes redondeados */
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 5px;
 }
 
 .close-carrito-button:hover {
@@ -37,30 +37,73 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  font-size: 14px;
 }
 
 .detalles-item {
-  margin-left: 10px;
+  margin-left: 15px;
 }
 
-.comprar-button {
-  background-color: #007BA7;
+.detalles-item h3 {
+  font-size: 25px; /* Tamaño de fuente reducido */
+}
+
+.cantidad-button {
+  background-color: #a6c732;
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 5px;
   cursor: pointer;
-  margin-top: 20px;
+  margin: 0 5px;
+  border-radius: 5px;
 }
 
-.comprar-button:hover {
+.cantidad-button:hover {
   background-color: #b30909;
 }
 
-.divVisible {
-  display: block;
+.eliminar-button {
+  background-color: #b30909;
+  color: white;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  margin-left: 10px; /* Margen izquierdo para separación */
+  border-radius: 5px;
 }
 
-.divInvisible {
-  display: none;
+.eliminar-button:hover {
+  background-color: #ff0000;
+}
+
+select {
+  width: 100%; /* Ancho completo */
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.realizar-pedido-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #a6c732;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.realizar-pedido-button:hover {
+  background-color: #b30909;
+}
+
+p strong {
+  font-weight: bold;
+}
+
+.producto-imagen {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
 }

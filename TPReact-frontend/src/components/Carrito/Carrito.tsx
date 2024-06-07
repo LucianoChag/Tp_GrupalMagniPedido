@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import './Carrito.css';
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react';
-import PreferenceMP from '../../types/PreferenceMP';
-import Pedido from '../../types/PedidoMP';
-import { FaTimes } from 'react-icons/fa';
+import { FaTimes, FaTrashAlt } from 'react-icons/fa'; // Importar el ícono de eliminar
 import { Producto } from '../../types/types';
-import { Item } from 'react-bootstrap/lib/Breadcrumb';
 
 // Enums para TipoEnvio y FormaPago
 enum TipoEnvio {
@@ -18,7 +15,18 @@ enum FormaPago {
   MERCADO_PAGO = 'MERCADO_PAGO'
 }
 
-async function createPreferenceMP(pedido?: Pedido) {
+interface PedidoMP {
+  id: number;
+  titulo: string;
+  montoTotal: string;
+}
+
+interface PreferenceMP {
+  id: string;
+  statusCode: number;
+}
+
+async function createPreferenceMP(pedido: PedidoMP) {
   const urlServer = 'http://localhost:8080/pedido/api/create_preference_mp';
   const method: string = "POST";
   const response = await fetch(urlServer, {
@@ -49,21 +57,19 @@ const Carrito: React.FC<CarritoProps> = ({ carrito, setCarrito, toggleCarrito })
     return carrito.reduce((total, item) => total + item.precioVenta * item.cantidad, 0);
   };
 
-  const calcularTotalCosto = () => {
-    return calcularTotal() + 300;
-  };
-
   const getPreferenceMP = async () => {
     setLoading(true);
     try {
       const response: PreferenceMP = await createPreferenceMP({
         id: 0,
-        titulo: 'Pedido carrito instrumentos',
-        montoTotal: calcularTotal()
+        titulo: 'Pedido carrito de compras',
+        montoTotal: calcularTotal().toString()
       });
-      console.log("Preference id: " + response.id);
-      if (response) {
+
+      if (response.statusCode === 201) { // Asegúrate de que el código de estado sea 201 (creado)
         setIdPreference(response.id);
+      } else {
+        throw new Error('Error al crear la preferencia de Mercado Pago');
       }
     } catch (error) {
       console.error('Error al crear la preferencia de Mercado Pago:', error);
@@ -96,7 +102,7 @@ const Carrito: React.FC<CarritoProps> = ({ carrito, setCarrito, toggleCarrito })
     setLoading(true);
   
     try {
-      const totalCosto = calcularTotalCosto();
+      const totalCosto = calcularTotal() + 300;
       const horaEstimadaFinalizacion = new Date(Date.now() + 30 * 60 * 1000); // Sumar 30 minutos
 
       const pedido = {
@@ -114,7 +120,6 @@ const Carrito: React.FC<CarritoProps> = ({ carrito, setCarrito, toggleCarrito })
         })),
       
       };
-
 
       const pedidoResponse = await fetch('http://localhost:8080/pedido', {
         method: 'POST',
@@ -156,18 +161,18 @@ const Carrito: React.FC<CarritoProps> = ({ carrito, setCarrito, toggleCarrito })
         <div>
           {carrito.map(item => (
             <div key={item.id} className="carrito-item">
-              <img src={"/img/" + item.imagenes} alt={item.denominacion} style={{ width: '100px' }} />
+              <img src={`/img/${item.imagen}`} alt={item.denominacion} className="producto-imagen" />
               <div className="detalles-item">
                 <h3>{item.denominacion}</h3>
-                <p>Precio: ${item.precioVenta}</p>
+                <p><strong>Precio:</strong> ${item.precioVenta}</p>
                 <p>
-                  Cantidad: 
-                  <button onClick={() => handleDecrementarCantidad(item.id)}>-</button>
+                  <strong>Cantidad:</strong> 
+                  <button className="cantidad-button" onClick={() => handleDecrementarCantidad(item.id)}>-</button>
                   {item.cantidad}
-                  <button onClick={() => handleIncrementarCantidad(item.id)}>+</button>
+                  <button className="cantidad-button" onClick={() => handleIncrementarCantidad(item.id)}>+</button>
+                  <button className="eliminar-button" onClick={() => handleEliminarProducto(item.id)}><FaTrashAlt /></button>
                 </p>
-                <p>Subtotal: ${item.precioVenta * item.cantidad}</p>
-                <button onClick={() => handleEliminarProducto(item.id)}>Eliminar</button>
+                <p><strong>Subtotal:</strong> ${item.precioVenta * item.cantidad}</p>
               </div>
             </div>
           ))}
@@ -194,7 +199,7 @@ const Carrito: React.FC<CarritoProps> = ({ carrito, setCarrito, toggleCarrito })
               )}
             </>
           )}
-          <button onClick={handleRealizarPedido}>Realizar pedido</button>
+          <button className="realizar-pedido-button" onClick={handleRealizarPedido}>Realizar pedido</button>
         </div>
       )}
     </div>

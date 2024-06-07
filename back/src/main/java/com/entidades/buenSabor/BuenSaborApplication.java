@@ -187,7 +187,17 @@ public class BuenSaborApplication {
 					.esInsumo(false)
 					.build();
 
+			Categoria categoriaHamburguesas = Categoria.builder().denominacion("Hamburguesas")
+					.esInsumo(false)
+					.build();
 
+			Categoria categoriaLomos = Categoria.builder().denominacion("Lomos")
+					.esInsumo(false)
+					.build();
+
+			Categoria categoriaPapas = Categoria.builder().denominacion("Papas")
+					.esInsumo(false)
+					.build();
 
 			Categoria categoriaInsumos = Categoria.builder()
 					.denominacion("Insumos")
@@ -196,6 +206,9 @@ public class BuenSaborApplication {
 
 			// Grabo la categoría de insumos y de Manufacturados
 			categoriaRepository.save(categoriaPizzas);
+			categoriaRepository.save(categoriaHamburguesas);
+			categoriaRepository.save(categoriaLomos);
+			categoriaRepository.save(categoriaPapas);
 			categoriaRepository.save(categoriaInsumos);
 			// Asigno subCategorías
 
@@ -213,6 +226,9 @@ public class BuenSaborApplication {
 			sucursalGuaymallen.getCategorias().add(categoriaGaseosas);
 			sucursalGuaymallen.getCategorias().add(categoriaTragos);
 			sucursalGuaymallen.getCategorias().add(categoriaPizzas);
+			sucursalGuaymallen.getCategorias().add(categoriaHamburguesas);
+			sucursalGuaymallen.getCategorias().add(categoriaLomos);
+			sucursalGuaymallen.getCategorias().add(categoriaPapas);
 			logger.info("{}",sucursalGuaymallen);
 			// Grabo las categorias que vende esa sucursal
 			sucursalRepository.save(sucursalGuaymallen);
@@ -230,6 +246,10 @@ public class BuenSaborApplication {
 			sucursalMarDelPlata.getCategorias().add(categoriaGaseosas);
 			sucursalMarDelPlata.getCategorias().add(categoriaTragos);
 			sucursalMarDelPlata.getCategorias().add(categoriaPizzas);
+			sucursalMarDelPlata.getCategorias().add(categoriaHamburguesas);
+			sucursalMarDelPlata.getCategorias().add(categoriaLomos);
+			sucursalMarDelPlata.getCategorias().add(categoriaPapas);
+
 // Grabo las categorias que vende esa sucursal
 			sucursalRepository.save(sucursalMarDelPlata);
 
@@ -278,12 +298,75 @@ public class BuenSaborApplication {
 					precioVenta(130.0).
 					tiempoEstimadoMinutos(15).
 					preparacion("Pasos de preparacion de una muzza de toda la vida")
-					.categoria(categoriaGaseosas).
+					.categoria(categoriaPizzas).
+					imagen("pizzaMuzarella.jpg").
 					build();
-			ArticuloManufacturado pizzaNapolitana = ArticuloManufacturado.builder().denominacion("Pizza Napolitana").descripcion("Una pizza clasica").unidadMedida(unidadMedidaPorciones).precioVenta(150.0).tiempoEstimadoMinutos(15).preparacion("Pasos de preparacion de una pizza napolitana italiana").categoria(categoriaPizzas).build();
+			ArticuloManufacturado pizzaNapolitana = ArticuloManufacturado.builder().
+					denominacion("Pizza Napolitana").
+					descripcion("Una pizza clasica").
+					unidadMedida(unidadMedidaPorciones).
+					precioVenta(150.0).
+					tiempoEstimadoMinutos(15).
+					preparacion("Pasos de preparacion de una pizza napolitana italiana").categoria(categoriaPizzas)
+					.imagen("pizzaNapolitana.jpg").build();
+
+
+			// Hamburguesas
+			ArticuloManufacturado hamburguesaClasica = ArticuloManufacturado.builder()
+					.denominacion("Hamburguesa Clásica")
+					.descripcion("Una hamburguesa tradicional con carne, lechuga, tomate y queso.")
+					.unidadMedida(unidadMedidaCantidad)
+					.precioVenta(120.0)
+					.tiempoEstimadoMinutos(15)
+					.preparacion("Pasos de preparación de la hamburguesa clásica.")
+					.categoria(categoriaHamburguesas)
+					.imagen("hamburguesaClasica.jpg")
+					.build();
+
+			// Lomos
+			ArticuloManufacturado lomoCompleto = ArticuloManufacturado.builder()
+					.denominacion("Lomo Completo")
+					.descripcion("Un lomo completo con carne, jamón, queso, lechuga y tomate.")
+					.unidadMedida(unidadMedidaCantidad)
+					.precioVenta(180.0)
+					.tiempoEstimadoMinutos(25)
+					.preparacion("Pasos de preparación del lomo completo.")
+					.categoria(categoriaLomos)
+					.imagen("lomoCompleto.jpg")
+					.build();
+
+			// Papas
+			ArticuloManufacturado papasFritas = ArticuloManufacturado.builder()
+					.denominacion("Papas Fritas")
+					.descripcion("Papas fritas crujientes y doradas.")
+					.unidadMedida(unidadMedidaGramos)
+					.precioVenta(80.0)
+					.tiempoEstimadoMinutos(10)
+					.preparacion("Pasos de preparación de las papas fritas.")
+					.categoria(categoriaPapas)
+					.imagen("papasFritas.jpg")
+					.build();
+
+			// Bebidas
+			ArticuloManufacturado gaseosaCola = ArticuloManufacturado.builder()
+					.denominacion("Coca Cola")
+					.descripcion("Una gaseosa refrescante sabor cola.")
+					.unidadMedida(unidadMedidaLitros)
+					.precioVenta(50.0)
+					.tiempoEstimadoMinutos(0)
+					.preparacion("No aplica")
+					.categoria(categoriaBebidas)
+					.imagen("gaseosaCola.jpg")
+					.build();
+
+
 
 			articuloManufacturadoRepository.save(pizzaMuzarella);
 			articuloManufacturadoRepository.save(pizzaNapolitana);
+			articuloManufacturadoRepository.save(hamburguesaClasica);
+			articuloManufacturadoRepository.save(lomoCompleto);
+			articuloManufacturadoRepository.save(papasFritas);
+			articuloManufacturadoRepository.save(gaseosaCola);
 
 			// Establecer las relaciones entre estos objetos. Art+iculos de la Receta independiente
 			ArticuloManufacturadoDetalle detalle1 = ArticuloManufacturadoDetalle.builder().

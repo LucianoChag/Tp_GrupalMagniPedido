@@ -68,17 +68,11 @@ public class ArticuloInsumoServiceImp extends BaseServiceImp<ArticuloInsumo, Lon
     public ResponseEntity<List<Map<String, Object>>> getAllImagesByArticuloId(Long id) {
         try {
             // Consultar todas las imágenes desde la base de datos
-            List<ImagenArticulo> images = baseRepository.getById(id).getImagenes().stream().toList();
+
             List<Map<String, Object>> imageList = new ArrayList<>();
 
             // Convertir cada imagen en un mapa de atributos para devolver como JSON
-            for (ImagenArticulo image : images) {
-                Map<String, Object> imageMap = new HashMap<>();
-                imageMap.put("id", image.getId());
-                imageMap.put("name", image.getName());
-                imageMap.put("url", image.getUrl());
-                imageList.add(imageMap);
-            }
+
 
             // Devolver la lista de imágenes como ResponseEntity con estado OK (200)
             return ResponseEntity.ok(imageList);
@@ -90,6 +84,7 @@ public class ArticuloInsumoServiceImp extends BaseServiceImp<ArticuloInsumo, Lon
     }
 
     // Método para subir imágenes a Cloudinary y guardar los detalles en la base de datos
+    /*
     @Override
     //Pedimos el id de articulo para saber a que articulo asignar las imagenes
     public ResponseEntity<String> uploadImages(MultipartFile[] files, Long idArticulo) {
@@ -136,7 +131,7 @@ public class ArticuloInsumoServiceImp extends BaseServiceImp<ArticuloInsumo, Lon
             // Devolver un error (400) si ocurre alguna excepción durante el proceso de subida
             return new ResponseEntity<>("{\"status\":\"ERROR\", \"message\":\"" + e.getMessage() + "\"}", HttpStatus.BAD_REQUEST);
         }
-    }
+    } */
 
     // Método para eliminar una imagen por su identificador en la base de datos y en Cloudinary
     @Override

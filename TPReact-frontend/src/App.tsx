@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavBar from "./components/NavBar";
-import './components/NavBar.css';
+import NavBar from "./components/NavBar/NavBar";
+import './components/NavBar/NavBar.css';
 import Detalle from "./components/Detalle/Detalle";
 import AñadirInstrumento from "./components/AñadirInstrumento/AñadirInstrumento";
 import Carrito from "./components/Carrito/Carrito";

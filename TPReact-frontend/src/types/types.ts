@@ -38,11 +38,24 @@ export interface UnidadMedida {
     articuloManufacturadoDetalles: ArticuloManufacturadoDetalle[];
     habilitado: boolean;
     categoriaNombre: string | null;
-    imagenes: string[];
+    imagen: string;
     cantidad?: number; // Añadir esta línea
   }
   
+  export enum FormaPago {
+    EFECTIVO = 'Efectivo',
+    MERCADO_PAGO = 'Mercado Pago'
+  }
   
+  export enum TipoEnvio {
+    DELIVERY = 'Delivery',
+    TAKE_AWAY = 'Take Away'
+  }
+  
+  export interface PreferenceMP {
+    id: string;
+    statusCode: number;
+  }
   
   export interface ButtonProps {
     onClick: () => void;
