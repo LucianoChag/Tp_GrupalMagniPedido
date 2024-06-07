@@ -1,0 +1,9 @@
+.category-filter {
+    width: 100%;
+    max-width: 300px; 
+    padding: 10px 8px; 
+    margin-left: 0%; 
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  

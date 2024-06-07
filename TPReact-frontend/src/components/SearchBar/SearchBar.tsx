@@ -1,5 +1,6 @@
 // src/components/SearchBar/SearchBar.tsx
 import React from 'react';
+import './SearchBar.css'
 
 interface SearchBarProps {
   searchTerm: string;
@@ -13,8 +14,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, onSearchTermChange })
       value={searchTerm}
       onChange={(e) => onSearchTermChange(e.target.value)}
       placeholder="Buscar productos..."
+      className="common-input search-bar"
     />
   );
 };
-
 export default SearchBar;

@@ -45,7 +45,7 @@
 }
 
 .detalles-item h3 {
-  font-size: 25px; /* Tamaño de fuente reducido */
+  font-size: 18px; /* Tamaño de fuente ajustado */
 }
 
 .cantidad-button {
@@ -76,12 +76,8 @@
   background-color: #ff0000;
 }
 
-select {
-  width: 100%; /* Ancho completo */
-  padding: 5px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+.select-container {
+  margin-top: 10px;
 }
 
 .realizar-pedido-button {
